@@ -1,14 +1,1676 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Developer Portfolio | Expert Frontend & Fullstack Developer</title>
- <link rel="stylesheet" href="a.css">
+  <title>Web Developer Profesional | Rafli Maulana - Jasa Pembuatan Website Terpercaya</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* CSS Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    :root {
+      --primary: #a4133c;
+      --primary-dark: #800f2f;
+      --primary-light: #c9184a;
+      --secondary: #ff758f;
+      --accent: #590d22;
+      --dark: #0b090a;
+      --light: #fff0f3;
+      --gray: #d3d3d3;
+      --border-radius: 12px;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--light);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Typography */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    h3 {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: var(--secondary);
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: clamp(1rem, 2vw, 1.1rem);
+    }
+
+    /* Animations */
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Typing Animation */
+    @keyframes typing {
+
+      0%,
+      100% {
+        width: 0
+      }
+
+      20%,
+      80% {
+        width: 100%
+      }
+    }
+
+    @keyframes blink-caret {
+
+      from,
+      to {
+        border-color: transparent
+      }
+
+      50% {
+        border-color: var(--primary)
+      }
+    }
+
+    /* NEW: Text Reveal Animation */
+    @keyframes revealText {
+      0% {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* NEW: Letter Spread Animation */
+    @keyframes letterSpread {
+      0% {
+        letter-spacing: -0.5em;
+        opacity: 0;
+      }
+
+      40% {
+        opacity: 0.6;
+      }
+
+      100% {
+        letter-spacing: normal;
+        opacity: 1;
+      }
+    }
+
+    /* NEW: Text Wave Animation */
+    @keyframes textWave {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      25% {
+        transform: translateY(-5px);
+      }
+
+      75% {
+        transform: translateY(5px);
+      }
+    }
+
+    /* Layout Components */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      padding: 0 2rem;
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 5rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Effects & Utilities */
+    .text-gradient {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+
+    .blur-effect {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: -1;
+      opacity: 0.5;
+    }
+
+    .blur-1 {
+      background-color: var(--primary);
+      top: -75px;
+      left: -75px;
+    }
+
+    .blur-2 {
+      background-color: var(--secondary);
+      bottom: -75px;
+      right: -75px;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .glass:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .glass h3 {
+      color: white;
+      background: var(--primary);
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 5px;
+      margin-bottom: 1.5rem;
+    }
+
+    .neon-border {
+      position: relative;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+    }
+
+    .neon-border::before {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      background: linear-gradient(45deg, var(--primary), var(--secondary), var(--primary-light), var(--accent));
+      background-size: 400%;
+      z-index: -1;
+      animation: gradient 15s ease infinite;
+      border-radius: var(--border-radius);
+    }
+
+    /* Nav */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem 0;
+      z-index: 1000;
+      transition: var(--transition);
+      background: rgba(11, 9, 10, 0.8);
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .menu {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .menu-item {
+      text-decoration: none;
+      color: var(--light);
+      font-weight: 500;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: var(--transition);
+    }
+
+    .menu-item::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--primary);
+      transition: var(--transition);
+    }
+
+    .menu-item:hover {
+      color: var(--primary);
+    }
+
+    .menu-item:hover::after {
+      width: 100%;
+    }
+
+    .mobile-nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--light);
+      font-size: 1.5rem;
+      cursor: pointer;
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1001;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    .hero-text {
+      animation: slideInLeft 1s ease-out;
+    }
+
+    /* Typing Animation Container */
+    .typing-container {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .typing-effect-wrapper {
+      position: relative;
+      height: 1.6em;
+      overflow: hidden;
+    }
+
+    .typing-effect {
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid var(--primary);
+      animation: typing 4s steps(30) infinite, blink-caret 0.75s step-end infinite;
+    }
+
+    .hero-image {
+      position: relative;
+      animation: slideInRight 1s ease-out;
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-img {
+      width: 80%;
+      height: auto;
+      border-radius: 50%;
+      position: relative;
+      z-index: 1;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .circle-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .orbit {
+      position: absolute;
+      width: 120%;
+      height: 120%;
+      border-radius: 50%;
+      border: 2px dashed rgba(255, 255, 255, 0.1);
+      animation: spin 20s linear infinite;
+    }
+
+    .tech-icon {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-color: var(--dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .tech-icon img {
+      width: 65%;
+      height: 65%;
+      object-fit: contain;
+    }
+
+    .tech-1 {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      animation-delay: 0s;
+    }
+
+    .tech-2 {
+      top: 20%;
+      right: 0;
+      animation-delay: 1s;
+    }
+
+    .tech-3 {
+      bottom: 20%;
+      right: 0;
+      animation-delay: 2s;
+    }
+
+    .tech-4 {
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      animation-delay: 3s;
+    }
+
+    .tech-5 {
+      bottom: 20%;
+      left: 0;
+      animation-delay: 4s;
+    }
+
+    .tech-6 {
+      top: 20%;
+      left: 0;
+      animation-delay: 5s;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background-color: var(--primary);
+      color: var(--light);
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-right: 1rem;
+      margin-top: 1rem;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background-color: var(--primary-dark);
+      transition: var(--transition);
+      z-index: -1;
+    }
+
+    .btn:hover::before {
+      width: 100%;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn-outline::before {
+      background-color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      color: var(--light);
+    }
+
+    /* About Section */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text {
+      animation: fadeIn 2s ease-out;
+    }
+
+    .skills {
+      margin-top: 2rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .skill-tag {
+      padding: 0.5rem 1rem;
+      background-color: var(--primary-dark);
+      color: var(--light);
+      border-radius: 50px;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .skill-tag:hover {
+      transform: translateY(-3px);
+      background-color: var(--primary);
+      cursor: default;
+    }
+
+    /* Fun Design Section */
+    .fun-design {
+      background: linear-gradient(135deg, #ffafcc, #ffc8dd, #cdb4db);
+      padding: 5rem 0;
+      position: relative;
+      overflow: hidden;
+      color: #15191f;
+      margin: 5rem 0;
+      border-radius: var(--border-radius);
+    }
+
+    .fun-design h2 {
+      text-align: center;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: #560bad;
+      text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.5);
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 5;
+    }
+
+    .design-styles-wrapper {
+      position: relative;
+    }
+
+    .design-styles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      position: relative;
+      z-index: 5;
+    }
+
+    .style-card {
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .style-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .style-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .style-card:hover .style-icon {
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    .style-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .style-card p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Style variations */
+    .fun-style {
+      background: white;
+      border: 3px dashed #ff758f;
+      box-shadow: 5px 5px 0 #ff758f;
+    }
+
+    .fun-style .style-icon {
+      color: #ff758f;
+    }
+
+    .fun-style h3 {
+      color: #560bad;
+      font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+    }
+
+    .elegant-style {
+      background: #2b2d42;
+      color: #edf2f4;
+      border: 1px solid #edf2f4;
+    }
+
+    .elegant-style .style-icon {
+      color: #ffd700;
+    }
+
+    .elegant-style h3 {
+      color: #ffd700;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 1px;
+    }
+
+    .minimal-style {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+    }
+
+    .minimal-style .style-icon {
+      color: #212529;
+    }
+
+    .minimal-style h3 {
+      color: #212529;
+      font-family: 'Helvetica Neue', sans-serif;
+      letter-spacing: -0.5px;
+      font-weight: 300;
+    }
+
+    .bold-style {
+      background: #d00000;
+      color: white;
+    }
+
+    .bold-style .style-icon {
+      color: #ffba08;
+    }
+
+    .bold-style h3 {
+      color: white;
+      font-family: 'Impact', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Decorative bubbles */
+    .fun-bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      animation: float 6s infinite ease-in-out;
+      z-index: 1;
+    }
+
+    .bubble-1 {
+      width: 100px;
+      height: 100px;
+      top: 10%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+
+    .bubble-2 {
+      width: 80px;
+      height: 80px;
+      top: 20%;
+      right: 10%;
+      animation-delay: 1.5s;
+    }
+
+    .bubble-3 {
+      width: 120px;
+      height: 120px;
+      bottom: 15%;
+      right: 5%;
+      animation-delay: 1s;
+    }
+
+    .bubble-4 {
+      width: 70px;
+      height: 70px;
+      bottom: 10%;
+      left: 15%;
+      animation-delay: 2.5s;
+    }
+
+    /* NEW: Project Section with Neutral Color Scheme */
+    .projects {
+      position: relative;
+      background-color: rgba(11, 9, 10, 0.9);
+    }
+
+    /* NEW: Creative Section Title with Animated Typography */
+    .creative-title {
+      position: relative;
+      text-align: center;
+      margin-bottom: 3rem;
+      overflow: hidden;
+    }
+
+    .creative-title .title-wrapper {
+      display: inline-block;
+      overflow: hidden;
+    }
+
+    .creative-title .letter {
+      display: inline-block;
+      transform: translateY(100%);
+      opacity: 0;
+      animation: revealText 0.5s forwards;
+    }
+
+    .creative-title .letter:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .creative-title .letter:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .creative-title .letter:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+
+    .creative-title .letter:nth-child(4) {
+      animation-delay: 0.25s;
+    }
+
+    .creative-title .letter:nth-child(5) {
+      animation-delay: 0.3s;
+    }
+
+    .creative-title .letter:nth-child(6) {
+      animation-delay: 0.35s;
+    }
+
+    .creative-title .letter:nth-child(7) {
+      animation-delay: 0.4s;
+    }
+
+    .creative-title .letter:nth-child(8) {
+      animation-delay: 0.45s;
+    }
+
+    .creative-title .letter:nth-child(9) {
+      animation-delay: 0.5s;
+    }
+
+    .creative-title .letter:nth-child(10) {
+      animation-delay: 0.55s;
+    }
+
+    .creative-title .letter:nth-child(11) {
+      animation-delay: 0.6s;
+    }
+
+    .creative-title .letter:nth-child(12) {
+      animation-delay: 0.65s;
+    }
+
+    .creative-title .letter:nth-child(13) {
+      animation-delay: 0.7s;
+    }
+
+    .creative-title .letter:nth-child(14) {
+      animation-delay: 0.75s;
+    }
+
+    .creative-title .letter:nth-child(15) {
+      animation-delay: 0.8s;
+    }
+
+    .creative-title .letter:nth-child(16) {
+      animation-delay: 0.85s;
+    }
+
+    .creative-title .letter:nth-child(17) {
+      animation-delay: 0.9s;
+    }
+
+    .creative-title .letter:nth-child(18) {
+      animation-delay: 0.95s;
+    }
+
+    .creative-title .letter:nth-child(19) {
+      animation-delay: 1s;
+    }
+
+    .creative-title .letter:nth-child(20) {
+      animation-delay: 1.05s;
+    }
+
+    .creative-title .letter:nth-child(21) {
+      animation-delay: 1.1s;
+    }
+
+    .creative-title .letter:nth-child(22) {
+      animation-delay: 1.15s;
+    }
+
+    .creative-title .letter:nth-child(23) {
+      animation-delay: 1.2s;
+    }
+
+    .creative-title .letter:nth-child(24) {
+      animation-delay: 1.25s;
+    }
+
+    .creative-title .letter:nth-child(25) {
+      animation-delay: 1.3s;
+    }
+
+    .creative-title .letter:nth-child(26) {
+      animation-delay: 1.35s;
+    }
+
+    .creative-title .letter:nth-child(27) {
+      animation-delay: 1.4s;
+    }
+
+    .creative-title .letter:nth-child(28) {
+      animation-delay: 1.45s;
+    }
+
+    .creative-title .letter:nth-child(29) {
+      animation-delay: 1.5s;
+    }
+
+    .creative-title .letter:nth-child(30) {
+      animation-delay: 1.55s;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .project-card {
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      position: relative;
+      height: 300px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      filter: grayscale(100%);
+    }
+
+    .project-card:hover .project-img {
+      transform: scale(1.1);
+      filter: grayscale(0%);
+    }
+
+    .project-content {
+      position: absolute;
+      inset: 0;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 100%);
+      transition: background 0.3s ease;
+    }
+
+    .project-card:hover .project-content {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 60%, rgba(0, 0, 0, 0.3) 100%);
+    }
+
+    .project-title {
+      color: white;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+      transform: translateY(0);
+      transition: transform 0.3s ease;
+    }
+
+    .project-description {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, opacity 0.5s ease;
+      margin-bottom: 0;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .project-card:hover .project-description {
+      max-height: 100px;
+      opacity: 1;
+      margin-bottom: 1rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: auto;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: transform 0.3s ease 0.1s, opacity 0.3s ease 0.1s;
+    }
+
+    .project-card:hover .project-tags {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #000;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+
+    /* Stats Section */
+    .stats {
+      background-color: rgba(11, 9, 10, 0.9);
+      position: relative;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .stat-card {
+      height: 200px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .stat-content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    .stat-card:hover .stat-content {
+      transform: rotateY(180deg);
+    }
+
+    .stat-front,
+    .stat-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: var(--border-radius);
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .stat-back {
+      transform: rotateY(180deg);
+      background-color: var(--primary-dark);
+    }
+
+    .stat-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--light);
+    }
+
+    .stat-label {
+      font-size: 1rem;
+      text-align: center;
+      color: var(--gray);
+    }
+
+    .stat-description {
+      font-size: 0.9rem;
+      text-align: center;
+      color: var(--light);
+      line-height: 1.4;
+    }
+
+    /* NEW: Enhanced Testimonial Section for Single Testimonial */
+    .testimonials {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-spotlight {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(15px);
+      border-radius: var(--border-radius);
+      padding: 3rem;
+      margin: 4rem auto;
+      max-width: 800px;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeIn 1s forwards 0.5s;
+    }
+
+    .testimonial-spotlight::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      background: linear-gradient(45deg, var(--primary), var(--secondary), var(--primary-light), var(--accent));
+      background-size: 400%;
+      z-index: -1;
+      filter: blur(10px);
+      opacity: 0.7;
+      animation: gradient 15s ease infinite;
+      border-radius: calc(var(--border-radius) + 3px);
+    }
+
+    .quote-icon {
+      font-size: 5rem;
+      color: var(--primary);
+      position: absolute;
+      top: -1.5rem;
+      left: 2rem;
+      opacity: 0.2;
+    }
+
+    .testimonial-text {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+      font-style: italic;
+      color: var(--light);
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .author-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary);
+    }
+
+    .author-info h4 {
+      margin-bottom: 0.2rem;
+      font-size: 1.2rem;
+      color: var(--light);
+    }
+
+    .author-position {
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+
+    .testimonial-rating {
+      margin-top: 1rem;
+      color: #ffd700;
+      font-size: 1.5rem;
+      letter-spacing: 0.3rem;
+    }
+
+    /* Contact Section */
+    .contact {
+      position: relative;
+    }
+
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary-dark);
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+
+    .contact-item:hover .contact-icon {
+      background-color: var(--primary);
+      transform: rotate(360deg);
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--dark);
+      padding: 3rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .footer-logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      transition: var(--transition);
+      color: var(--light);
+      text-decoration: none;
+    }
+
+    .social-link:hover {
+      background-color: var(--primary);
+      transform: translateY(-5px);
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 2rem;
+      margin: 1.5rem 0;
+    }
+
+    .footer-nav-link {
+      color: var(--gray);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-nav-link:hover {
+      color: var(--primary);
+    }
+
+    .copyright {
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+
+    /* NEW: Wave Text Animation */
+    .wave-text {
+      display: inline-block;
+    }
+
+    .wave-letter {
+      display: inline-block;
+      animation: textWave 2s infinite ease-in-out;
+    }
+
+    .wave-letter:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .wave-letter:nth-child(2) {
+      animation-delay: 0.05s;
+    }
+
+    .wave-letter:nth-child(3) {
+      animation-delay: 0.1s;
+    }
+
+    .wave-letter:nth-child(4) {
+      animation-delay: 0.15s;
+    }
+
+    .wave-letter:nth-child(5) {
+      animation-delay: 0.2s;
+    }
+
+    .wave-letter:nth-child(6) {
+      animation-delay: 0.25s;
+    }
+
+    .wave-letter:nth-child(7) {
+      animation-delay: 0.3s;
+    }
+
+    .wave-letter:nth-child(8) {
+      animation-delay: 0.35s;
+    }
+
+    .wave-letter:nth-child(9) {
+      animation-delay: 0.4s;
+    }
+
+    .wave-letter:nth-child(10) {
+      animation-delay: 0.45s;
+    }
+
+    .wave-letter:nth-child(11) {
+      animation-delay: 0.5s;
+    }
+
+    .wave-letter:nth-child(12) {
+      animation-delay: 0.55s;
+    }
+
+    .wave-letter:nth-child(13) {
+      animation-delay: 0.6s;
+    }
+
+    .wave-letter:nth-child(14) {
+      animation-delay: 0.65s;
+    }
+
+    .wave-letter:nth-child(15) {
+      animation-delay: 0.7s;
+    }
+
+    /* Effects */
+    .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--dark);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .preloader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top-color: var(--primary);
+      animation: spin 1s linear infinite;
+      position: relative;
+    }
+
+    .loader::before,
+    .loader::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      border: 3px solid transparent;
+    }
+
+    .loader::before {
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      border-top-color: var(--secondary);
+      animation: spin 2s linear infinite;
+    }
+
+    .loader::after {
+      top: 15px;
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+      border-top-color: var(--accent);
+      animation: spin 1.5s linear infinite;
+    }
+
+    .custom-cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.3);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      transition: width 0.3s, height 0.3s, background-color 0.3s;
+      mix-blend-mode: exclusion;
+    }
+
+    .cursor-dot {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 10000;
+      transition: transform 0.1s;
+    }
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      z-index: 9998;
+      transition: width 0.1s;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 40px;
+      height: 40px;
+      background-color: var(--primary);
+      color: var(--light);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 997;
+    }
+
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-5px);
+    }
+
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: float 15s infinite;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 992px) {
+      .mobile-nav-toggle {
+        display: block;
+      }
+
+      .menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background: rgba(11, 9, 10, 0.95);
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transition: right 0.3s ease;
+        z-index: 1000;
+      }
+
+      .menu.active {
+        right: 0;
+      }
+
+      .hero-content,
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .hero-image {
+        grid-row: 1;
+        margin-bottom: 2rem;
+      }
+
+      .profile-img {
+        width: 60%;
+      }
+
+      .testimonial-spotlight {
+        padding: 2rem;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .container {
+        padding: 0 1rem;
+      }
+
+      section {
+        padding: 3rem 0;
+      }
+
+      .design-styles-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .btn {
+        display: block;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .profile-img {
+        width: 80%;
+      }
+
+      .tech-icon {
+        width: 30px;
+        height: 30px;
+      }
+
+      .testimonial-spotlight {
+        padding: 1.5rem;
+      }
+
+      .testimonial-author {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .typing-container {
+        display: block;
+        width: 100%;
+        margin-bottom: 1.5rem;
+      }
+
+      .typing-static-text {
+        display: block;
+        width: 100%;
+        margin-bottom: 0.25rem;
+      }
+
+      .typing-effect-wrapper {
+        display: block;
+        width: 100%;
+      }
+
+      .testimonial-text {
+        font-size: 1rem;
+      }
+
+      .quote-icon {
+        font-size: 3rem;
+        top: -1rem;
+        left: 1rem;
+      }
+
+      .footer {
+        padding-bottom: 5rem;
+      }
+
+      .back-to-top {
+        bottom: 5rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -34,13 +1696,12 @@
     <div class="container navbar-content">
       <a href="#" class="logo">RAFLI<span class="text-gradient">_MAULANA</span></a>
       <div class="menu">
-        <a href="#home" class="menu-item">Home</a>
-        <a href="#about" class="menu-item">About</a>
-        <a href="#experience" class="menu-item">Experience</a>
-        <a href="#projects" class="menu-item">Projects</a>
-        <a href="#contact" class="menu-item">Contact</a>
+        <a href="#home" class="menu-item">Beranda</a>
+        <a href="#about" class="menu-item">Tentang</a>
+        <a href="#projects" class="menu-item">Portofolio</a>
+        <a href="#contact" class="menu-item">Kontak</a>
       </div>
-      <!-- NEW: Mobile Menu Toggle -->
+
       <button class="mobile-nav-toggle">
         <i class="fas fa-bars"></i>
       </button>
@@ -70,20 +1731,21 @@
     <div class="container">
       <div class="hero-content">
         <div class="hero-text">
-          <h1>Hi, I'm <span class="text-gradient">Rafli</span></h1>
-          <h3>Website Designer & Digital Expert</h3>
+          <h1>Halo, saya <span class="text-gradient">Rafli</span></h1>
+          <h3>Designer + Pembuat website</h3>
 
-          <!-- NEW: Typing Animation replacing static text -->
+          <!-- NEW: Typing Animation -->
           <div class="typing-container">
-            <p>I create</p>
+            <p>Saya membuat</p>
             <div class="typing-effect-wrapper">
               <span class="typing-effect"></span>
             </div>
           </div>
 
-          <p>Butuh website yang menarik dan mudah diakses di semua perangkat? Saya siap membantu mewujudkan ide Anda jadi tampilan digital yang memukau. Mulai dari portofolio keren hingga situs bisnis yang menarik pelanggan — semua bisa saya bantu, dengan desain yang terjangkau dan tepat sasaran.</p>
-          <a href="#projects" class="btn">View My Work</a>
-          <a href="#contact" class="btn btn-outline">Contact Me</a>
+          <p>Spesialis dalam membuat desain yang dar der dor dan sesuai dengan citra diri maupun perusahaan.</p>
+
+          <a href="#projects" class="btn">Lihat Karya Saya</a>
+          <a href="#contact" class="btn btn-outline">Konsultasi Gratis</a>
         </div>
         <div class="hero-image">
           <img src="raf.jpeg" alt="profile" class="profile-img">
@@ -110,65 +1772,92 @@
   <!-- About Section -->
   <section id="about" class="about">
     <div class="container">
-      <h2>About Me</h2>
+      <!-- NEW: Wave Text Animation for Title -->
+      <h2 class="wave-text">
+        <span class="wave-letter">M</span>
+        <span class="wave-letter">e</span>
+        <span class="wave-letter">n</span>
+        <span class="wave-letter">g</span>
+        <span class="wave-letter">a</span>
+        <span class="wave-letter">p</span>
+        <span class="wave-letter">a</span>
+        <span class="wave-letter">&nbsp;</span>
+        <span class="wave-letter">M</span>
+        <span class="wave-letter">e</span>
+        <span class="wave-letter">m</span>
+        <span class="wave-letter">i</span>
+        <span class="wave-letter">l</span>
+        <span class="wave-letter">i</span>
+        <span class="wave-letter">h</span>
+        <span class="wave-letter">&nbsp;</span>
+        <span class="wave-letter">S</span>
+        <span class="wave-letter">a</span>
+        <span class="wave-letter">y</span>
+        <span class="wave-letter">a</span>
+        <span class="wave-letter">?</span>
+      </h2>
       <div class="about-content">
         <div class="about-text">
-          <p>I'm a website creator with 5+ years of experience helping businesses and individuals establish their online
-            presence. I understand that not everyone speaks "tech language," so I make the process simple and
-            stress-free for you.</p>
-          <p>My clients range from small business owners to artists, restaurants, professionals, and anyone who needs a
-            beautiful website that attracts visitors and turns them into customers.</p>
-          <p>I believe your website should work for you - bringing in business, showcasing your work, or sharing your
-            message with the world. I handle all the technical details so you don't have to worry about how it works -
-            you'll just love the results!</p>
+          <p>Buat saya, desain bukan cuma soal tampilan, tapi soal rasa dan karakter. Saya fokus di branding dan persona
+            design,
+            jadi website yang saya buat biasanya punya gaya yang unik dan nyambung sama siapa pemiliknya.</p>
+          <p>Saya lebih suka ngulik hal-hal kecil yang bikin desain terasa hidup dan beda. Nggak asal keren, tapi
+            benar-benar ada
+            maknanya.</p>
           <div class="skills">
-            <h3>What I Create</h3>
+            <h3>Jenis Website yang Saya Buat</h3>
             <div class="skill-tags">
-              <div class="skill-tag">Business Websites</div>
-              <div class="skill-tag">Online Stores</div>
-              <div class="skill-tag">Professional Portfolios</div>
-              <div class="skill-tag">Restaurant Websites</div>
-              <div class="skill-tag">Personal Blogs</div>
-              <div class="skill-tag">Wedding Sites</div>
-              <div class="skill-tag">Photography Portfolios</div>
-              <div class="skill-tag">Artist Showcases</div>
-              <div class="skill-tag">Mobile-Friendly Designs</div>
-              <div class="skill-tag">Fast-Loading Pages</div>
-              <div class="skill-tag">Social Media Integration</div>
-              <div class="skill-tag">Contact Forms</div>
-              <div class="skill-tag">Google Maps</div>
-              <div class="skill-tag">Photo Galleries</div>
-              <div class="skill-tag">Booking Systems</div>
+              <div class="skill-tag">Toko Online E-commerce</div>
+              <div class="skill-tag">Website Bisnis Profesional</div>
+              <div class="skill-tag">Portofolio Kreatif</div>
+              <div class="skill-tag">Website Restoran & Kuliner</div>
+              <div class="skill-tag">Blog Personal & Bisnis</div>
+              <div class="skill-tag">Website Pernikahan</div>
+              <div class="skill-tag">Portofolio Fotografer</div>
+              <div class="skill-tag">Galeri Seni & Karya</div>
+              <div class="skill-tag">Landing Page Produk</div>
+              <div class="skill-tag">Website Company Profile</div>
+              <div class="skill-tag">Sistem Reservasi Online</div>
+              <div class="skill-tag">Katalog Produk Digital</div>
+              <div class="skill-tag">Website Event & Acara</div>
+              <div class="skill-tag">Platform Edukasi Online</div>
             </div>
           </div>
         </div>
         <div class="neon-border">
           <div class="glass">
-            <h3>Why People Choose Me</h3>
-            <p><strong>✓ No Tech Headaches:</strong> I handle all the complicated technical stuff so you don't have to
-              worry about it.</p>
-            <p><strong>✓ Works on All Devices:</strong> Your website will look great on phones, tablets, and computers.
-            </p>
-            <p><strong>✓ Won't Break Your Budget:</strong> Beautiful websites at prices small businesses and individuals
-              can afford.</p>
-            <p><strong>✓ Quick Turnaround:</strong> Get your website up and running in weeks, not months.</p>
-            <p><strong>✓ Easy to Understand:</strong> I explain everything in simple terms, not confusing tech jargon.
-            </p>
-            <p><strong>✓ Ongoing Help:</strong> Need changes later? I'm just a call or message away to help update your
-              site.</p>
+            <h3>Gaya Kerja & Prinsip Saya</h3>
+            <p><strong>✓ Desain yang Punya Karakter:</strong> Setiap website saya buat nggak generik—saya usahakan punya
+              nuansa
+              yang nyambung sama kepribadian atau brand yang ingin ditampilkan.</p>
+            <p><strong>✓ Fokus ke Branding & Persona:</strong> Saya bantu menemukan identitas visual yang kuat, bukan
+              cuma soal
+              tampilan tapi juga rasa.</p>
+            <p><strong>✓ Fleksibel & Kolaboratif:</strong> Terbuka dengan ide dan masukan, saya ingin proyek ini jadi
+              cerminan
+              kamu juga, bukan cuma buatan saya.</p>
+            <p><strong>✓ Tampilan Responsif:</strong> Website tetap rapi dan enak dilihat di berbagai ukuran layar—HP,
+              tablet,
+              atau laptop.</p>
+            <p><strong>✓ Komunikasi yang Nyantai:</strong> Saya jelasin dengan bahasa biasa, tanpa istilah teknis yang
+              bikin
+              pusing.</p>
+            <p><strong>✓ Siap Dukung Setelah Launch:</strong> Masih bisa bantu kalau ada revisi, tambahan, atau
+              perubahan ke
+              depannya.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- NEW: Fun Design Section -->
+
   <section id="design-styles" class="fun-design">
     <div class="container">
-      <h2>I Design for Every Style</h2>
+      <h2>Saya suka membuat Berbagai Gaya Desain berbeda</h2>
 
       <div class="design-styles-wrapper">
-        <!-- Decorative elements -->
+ 
         <div class="fun-bubble bubble-1"></div>
         <div class="fun-bubble bubble-2"></div>
         <div class="fun-bubble bubble-3"></div>
@@ -177,214 +1866,137 @@
         <div class="design-styles-grid">
           <div class="style-card fun-style">
             <div class="style-icon"><i class="fas fa-laugh-beam"></i></div>
-            <h3>Playful & Fun</h3>
-            <p>Colorful, energetic designs for brands with personality! Perfect for entertainment, children's services,
-              and creative businesses.</p>
+            <h3>Ceria & Energik</h3>
+            <p>Desain penuh warna dan semangat untuk brand yang ingin tampil menyenangkan! Cocok untuk bisnis hiburan,
+              produk anak-anak, dan usaha kreatif yang ingin menonjol.</p>
           </div>
 
           <div class="style-card elegant-style">
             <div class="style-icon"><i class="fas fa-gem"></i></div>
-            <h3>Elegant & Luxurious</h3>
-            <p>Sophisticated designs with premium aesthetics for high-end services, fashion brands, and luxury products.
-            </p>
+            <h3>Elegan & Mewah</h3>
+            <p>Desain berkelas dengan estetika premium untuk layanan high-end, brand fashion, produk luxury,
+              dan bisnis yang mengutamakan kesan eksklusif.</p>
           </div>
 
           <div class="style-card minimal-style">
             <div class="style-icon"><i class="fas fa-minus"></i></div>
-            <h3>Clean & Minimal</h3>
-            <p>Streamlined designs that put content first, ideal for professional services, portfolios, and modern
-              brands.</p>
+            <h3>Bersih & Minimalis</h3>
+            <p>Desain sederhana yang fokus pada konten, ideal untuk jasa profesional, portofolio personal,
+              dan brand modern yang mengutamakan fungsionalitas.</p>
           </div>
 
           <div class="style-card bold-style">
             <div class="style-icon"><i class="fas fa-fire"></i></div>
-            <h3>Bold & Dynamic</h3>
-            <p>Attention-grabbing designs with strong visuals for brands that want to make a statement and stand out.
-            </p>
+            <h3>Berani & Dinamis</h3>
+            <p>Desain yang mencuri perhatian dengan visual yang kuat untuk brand yang ingin membuat statement
+              dan tidak takut tampil beda dari kompetitor.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- IMPROVED: Experience Section -->
-  <section id="experience" class="experience">
-    <div class="container">
-      <h2>My Experience</h2>
-      <div class="experience-grid">
-        <div class="experience-card">
-          <span class="experience-date">March 2023</span>
-          <div class="experience-title">
-            <div class="experience-icon">
-              <i class="fas fa-store"></i>
-            </div>
-            <h3>Local Bakery Website</h3>
-          </div>
-          <p class="experience-description">Created a beautiful website for a family-owned bakery that helped them
-            increase in-store visits by 40% and start taking online orders.</p>
-          <div class="experience-tags">
-            <span class="tag">Small Business</span>
-            <span class="tag">Online Menu</span>
-            <span class="tag">Order System</span>
-            <span class="tag">Photo Gallery</span>
-            <span class="tag">Google Maps</span>
-          </div>
-        </div>
 
-        <div class="experience-card">
-          <span class="experience-date">October 2022</span>
-          <div class="experience-title">
-            <div class="experience-icon">
-              <i class="fas fa-camera"></i>
-            </div>
-            <h3>Photographer Portfolio</h3>
-          </div>
-          <p class="experience-description">Designed a stunning portfolio for a local photographer that showcases their
-            work beautifully and has attracted wedding and event bookings.</p>
-          <div class="experience-tags">
-            <span class="tag">Portfolio</span>
-            <span class="tag">Image Gallery</span>
-            <span class="tag">Booking Form</span>
-            <span class="tag">Testimonials</span>
-            <span class="tag">Mobile-Friendly</span>
-          </div>
-        </div>
-
-        <div class="experience-card">
-          <span class="experience-date">May 2022</span>
-          <div class="experience-title">
-            <div class="experience-icon">
-              <i class="fas fa-tshirt"></i>
-            </div>
-            <h3>Fashion Boutique Shop</h3>
-          </div>
-          <p class="experience-description">Built an online store for a clothing boutique that made it easy for them to
-            showcase products and accept payments online, increasing sales by 65%.</p>
-          <div class="experience-tags">
-            <span class="tag">Online Store</span>
-            <span class="tag">Product Catalog</span>
-            <span class="tag">Payment System</span>
-            <span class="tag">Instagram Feed</span>
-            <span class="tag">Customer Reviews</span>
-          </div>
-        </div>
-
-        <div class="experience-card">
-          <span class="experience-date">January 2022</span>
-          <div class="experience-title">
-            <div class="experience-icon">
-              <i class="fas fa-utensils"></i>
-            </div>
-            <h3>Restaurant Website</h3>
-          </div>
-          <p class="experience-description">Created a mouthwatering website for a local restaurant with online
-            reservations, menu display, and location information that helped increase bookings by 50%.</p>
-          <div class="experience-tags">
-            <span class="tag">Restaurant</span>
-            <span class="tag">Online Menu</span>
-            <span class="tag">Reservation System</span>
-            <span class="tag">Food Gallery</span>
-            <span class="tag">Customer Reviews</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- IMPROVED: Projects Section with Dynamic Grid -->
   <section id="projects" class="projects">
     <div class="container">
-      <h2>Websites I've Created</h2>
+
+      <div class="creative-title">
+        <h2 class="title-wrapper">
+          <span class="letter">W</span>
+          <span class="letter">e</span>
+          <span class="letter">b</span>
+          <span class="letter">s</span>
+          <span class="letter">i</span>
+          <span class="letter">t</span>
+          <span class="letter">e</span>
+          <span class="letter">&nbsp;</span>
+          <span class="letter">y</span>
+          <span class="letter">a</span>
+          <span class="letter">n</span>
+          <span class="letter">g</span>
+          <span class="letter">&nbsp;</span>
+          <span class="letter">T</span>
+          <span class="letter">e</span>
+          <span class="letter">l</span>
+          <span class="letter">a</span>
+          <span class="letter">h</span>
+          <span class="letter">&nbsp;</span>
+          <span class="letter">S</span>
+          <span class="letter">a</span>
+          <span class="letter">y</span>
+          <span class="letter">a</span>
+          <span class="letter">&nbsp;</span>
+          <span class="letter">C</span>
+          <span class="letter">i</span>
+          <span class="letter">p</span>
+          <span class="letter">t</span>
+          <span class="letter">a</span>
+          <span class="letter">k</span>
+          <span class="letter">a</span>
+          <span class="letter">n</span>
+        </h2>
+      </div>
+
       <div class="project-grid">
         <div class="project-card">
-          <img src="a.png" alt="Cafe Website" class="project-img">
+          <img src="a.png" alt="Website pameran cyber" class="project-img">
           <div class="project-content">
-            <h3 class="project-title">Cozy Cafe Website</h3>
-            <p class="project-description">A warm, inviting website for a neighborhood cafe with online ordering that
-              helped increase takeout orders by 75%.</p>
+            <h3 class="project-title">Website Museum Cyber</h3>
+            <p class="project-description">Website pengenalan apa itu museum cyber 3d online</p>
             <div class="project-tags">
-              <span class="tag">Restaurant</span>
-              <span class="tag">Online Ordering</span>
-              <span class="tag">Menu</span>
-              <span class="tag">Location Map</span>
+              <span class="tag">Bisnis F&B</span>
+              <span class="tag">Pemesanan Online</span>
+              <span class="tag">Menu Digital</span>
+              <span class="tag">Peta Lokasi</span>
             </div>
           </div>
         </div>
 
-        <div class="project-card">
-          <img src="a.png" alt="Wedding Website" class="project-img">
+<!--         <div class="project-card">
+          <img src="a.png" alt="Website Pernikahan" class="project-img">
           <div class="project-content">
-            <h3 class="project-title">Wedding Website</h3>
-            <p class="project-description">A beautiful wedding site with RSVP system, gift registry, and event details
-              that made planning so much easier for the couple.</p>
+            <h3 class="project-title">Website Pernikahan Impian</h3>
+            <p class="project-description">Website pernikahan yang romantic dengan sistem RSVP, gift registry,
+              dan detail acara yang memudahkan perencanaan dan koordinasi dengan tamu undangan.</p>
             <div class="project-tags">
-              <span class="tag">Event</span>
-              <span class="tag">RSVP Form</span>
-              <span class="tag">Photo Gallery</span>
-              <span class="tag">Maps</span>
+              <span class="tag">Event Spesial</span>
+              <span class="tag">Form RSVP</span>
+              <span class="tag">Galeri Foto</span>
+              <span class="tag">Info Lokasi</span>
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <div class="project-card">
-          <img src="a.png" alt="Dentist Website" class="project-img">
+<!--         <div class="project-card">
+          <img src="a.png" alt="Website Dokter Gigi" class="project-img">
           <div class="project-content">
-            <h3 class="project-title">Family Dentist Practice</h3>
-            <p class="project-description">A professional website for a dental practice with online appointment booking
-              that helped them attract new patients.</p>
+            <h3 class="project-title">Klinik Dokter Gigi Keluarga</h3>
+            <p class="project-description">Website profesional untuk praktek dokter gigi dengan sistem booking
+              appointment
+              online yang membantu menarik pasien baru dan mengatur jadwal dengan lebih efisien.</p>
             <div class="project-tags">
-              <span class="tag">Healthcare</span>
-              <span class="tag">Appointment System</span>
-              <span class="tag">Services List</span>
-              <span class="tag">Testimonials</span>
+              <span class="tag">Layanan Kesehatan</span>
+              <span class="tag">Sistem Appointment</span>
+              <span class="tag">Daftar Layanan</span>
+              <span class="tag">Testimoni Pasien</span>
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <div class="project-card">
-          <img src="a.png" alt="Personal Trainer Website" class="project-img">
+<!--         <div class="project-card">
+          <img src="a.png" alt="Website Personal Trainer" class="project-img">
           <div class="project-content">
-            <h3 class="project-title">Personal Trainer Site</h3>
-            <p class="project-description">An energetic website for a fitness trainer with class schedules, package
-              details, and client success stories that helped book more clients.</p>
+            <h3 class="project-title">Personal Trainer Fitness</h3>
+            <p class="project-description">Website penuh energi untuk pelatih fitness dengan jadwal kelas, detail paket,
+              dan galeri transformasi klien yang berhasil menarik lebih banyak member.</p>
             <div class="project-tags">
-              <span class="tag">Fitness</span>
-              <span class="tag">Booking System</span>
-              <span class="tag">Before/After Gallery</span>
-              <span class="tag">Testimonials</span>
+              <span class="tag">Bisnis Fitness</span>
+              <span class="tag">Sistem Booking</span>
+              <span class="tag">Galeri Before/After</span>
+              <span class="tag">Testimoni Member</span>
             </div>
           </div>
-        </div>
-
-        <div class="project-card">
-          <img src="a.png" alt="Handmade Crafts Shop" class="project-img">
-          <div class="project-content">
-            <h3 class="project-title">Handmade Crafts Shop</h3>
-            <p class="project-description">A charming online store for a local artisan to sell handmade products, which
-              expanded their customer base across the country.</p>
-            <div class="project-tags">
-              <span class="tag">Online Shop</span>
-              <span class="tag">Product Gallery</span>
-              <span class="tag">Shopping Cart</span>
-              <span class="tag">Payment System</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <img src="a.png" alt="Yoga Studio Website" class="project-img">
-          <div class="project-content">
-            <h3 class="project-title">Yoga Studio Website</h3>
-            <p class="project-description">A peaceful, inspiring website for a yoga studio with class bookings and
-              instructor profiles that helped fill more classes.</p>
-            <div class="project-tags">
-              <span class="tag">Wellness</span>
-              <span class="tag">Class Schedule</span>
-              <span class="tag">Booking System</span>
-              <span class="tag">Teacher Profiles</span>
-            </div>
-          </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
@@ -392,46 +2004,18 @@
   <!-- Stats Section -->
   <section id="stats" class="stats">
     <div class="container">
-      <h2>What My Work Delivers</h2>
+      <h2>Hal yang Saya Perhatikan Dalam Setiap Proyek</h2>
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-content">
             <div class="stat-front">
-              <div class="stat-icon"><i class="fas fa-shopping-bag"></i></div>
-              <div class="stat-number">65%</div>
-              <div class="stat-label">Sales Increase</div>
-            </div>
-            <div class="stat-back">
-              <p class="stat-description">My business clients typically see a 65% increase in sales after launching
-                their new website with proper contact forms and mobile design.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-content">
-            <div class="stat-front">
-              <div class="stat-icon"><i class="fas fa-users"></i></div>
-              <div class="stat-number">30+</div>
-              <div class="stat-label">Happy Clients</div>
-            </div>
-            <div class="stat-back">
-              <p class="stat-description">From small cafes to wedding photographers, over 30 satisfied clients who love
-                their websites and recommend me to friends.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-content">
-            <div class="stat-front">
-              <div class="stat-icon"><i class="fas fa-mobile-alt"></i></div>
+              <div class="stat-icon"><i class="fas fa-eye"></i></div>
               <div class="stat-number">100%</div>
-              <div class="stat-label">Mobile-Friendly</div>
+              <div class="stat-label">Desain Berkarakter</div>
             </div>
             <div class="stat-back">
-              <p class="stat-description">All websites I create look beautiful and work perfectly on phones and tablets,
-                where most of your customers will see them.</p>
+              <p class="stat-description">Setiap desain saya buat punya ciri khas tersendiri, menyesuaikan dengan
+                kepribadian atau pesan yang ingin dibawa pemiliknya.</p>
             </div>
           </div>
         </div>
@@ -439,13 +2023,43 @@
         <div class="stat-card">
           <div class="stat-content">
             <div class="stat-front">
-              <div class="stat-icon"><i class="fas fa-clock"></i></div>
-              <div class="stat-number">2-3</div>
-              <div class="stat-label">Weeks Delivery</div>
+              <div class="stat-icon"><i class="fas fa-user-circle"></i></div>
+              <div class="stat-number">10+</div>
+              <div class="stat-label">Persona Diangkat</div>
             </div>
             <div class="stat-back">
-              <p class="stat-description">Most websites are completed within 2-3 weeks from our first meeting, so you
-                can start attracting customers quickly.</p>
+              <p class="stat-description">Saya sudah bantu lebih dari 50 orang dan proyek untuk menemukan tampilan
+                visual
+                yang sesuai dengan karakter dan gaya mereka.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-content">
+            <div class="stat-front">
+              <div class="stat-icon"><i class="fas fa-palette"></i></div>
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Custom Desain</div>
+            </div>
+            <div class="stat-back">
+              <p class="stat-description">Saya tidak menggunakan template generik. Semua desain dibuat dari nol
+                berdasarkan
+                kebutuhan dan vibe yang ingin ditampilkan.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-content">
+            <div class="stat-front">
+              <div class="stat-icon"><i class="fas fa-brain"></i></div>
+              <div class="stat-number">1:1</div>
+              <div class="stat-label">Pendekatan Personal</div>
+            </div>
+            <div class="stat-back">
+              <p class="stat-description">Saya lebih suka kerja bareng secara personal, mendengarkan, berdiskusi, dan
+                mengembangkan ide secara dua arah.</p>
             </div>
           </div>
         </div>
@@ -453,93 +2067,28 @@
     </div>
   </section>
 
-  <!-- Testimonials Section -->
+
   <section id="testimonials" class="testimonials">
     <div class="container">
-      <h2>Client Testimonials</h2>
-      <div class="testimonials-container">
-        <div class="testimonials-track">
-          <div class="testimonial-card">
-            <div class="quote">"</div>
-            <p class="testimonial-text">"Rafli made creating our cafe website so easy! I'm not tech-savvy at all, but he
-              explained everything clearly and created exactly what we needed. Our takeout orders increased by 75% in
-              the first month!"</p>
-            <div class="testimonial-author">
-              <img src="a.png" alt="Client" class="author-img">
-              <div class="author-info">
-                <h4>Dewi Pratiwi</h4>
-                <span class="author-position">Owner, Aroma Cafe</span>
-              </div>
-            </div>
-          </div>
+      <h2>Kata Mereka</h2>
 
-          <div class="testimonial-card">
-            <div class="quote">"</div>
-            <p class="testimonial-text">"As a photographer, I needed a website that would showcase my work beautifully.
-              Rafli delivered beyond my expectations! The site is gorgeous, easy to update, and I've received so many
-              compliments from clients."</p>
-            <div class="testimonial-author">
-              <img src="/api/placeholder/60/60" alt="Client" class="author-img">
-              <div class="author-info">
-                <h4>Budi Santoso</h4>
-                <span class="author-position">Professional Photographer</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <div class="quote">"</div>
-            <p class="testimonial-text">"I was worried about creating a website for my small clothing boutique because I
-              thought it would be expensive and complicated. Rafli made it affordable and simple! Now I sell to
-              customers all over Indonesia."</p>
-            <div class="testimonial-author">
-              <img src="/api/placeholder/60/60" alt="Client" class="author-img">
-              <div class="author-info">
-                <h4>Sari Widodo</h4>
-                <span class="author-position">Owner, Batik Boutique</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <div class="quote">"</div>
-            <p class="testimonial-text">"Our family restaurant has been in business for 15 years, but we needed to adapt
-              to the digital age. Rafli created a website with online reservations that's bringing in younger customers.
-              It was worth every penny!"</p>
-            <div class="testimonial-author">
-              <img src="/api/placeholder/60/60" alt="Client" class="author-img">
-              <div class="author-info">
-                <h4>Agus Wijaya</h4>
-                <span class="author-position">Owner, Warung Nusantara</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <div class="quote">"</div>
-            <p class="testimonial-text">"When we needed a website for our wedding, Rafli created something beautiful
-              that made planning so much easier. Our guests loved using the RSVP system, and we cherish having our
-              special day preserved online."</p>
-            <div class="testimonial-author">
-              <img src="/api/placeholder/60/60" alt="Client" class="author-img">
-              <div class="author-info">
-                <h4>Anita & Reza</h4>
-                <span class="author-position">Newlywed Couple</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <div class="quote">"</div>
-            <p class="testimonial-text">"As a yoga instructor starting my own studio, I needed a website that felt
-              peaceful and made booking classes easy. Rafli created exactly what I needed, and my classes filled up
-              within weeks of launching!"</p>
-            <div class="testimonial-author">
-              <img src="/api/placeholder/60/60" alt="Client" class="author-img">
-              <div class="author-info">
-                <h4>Maya Puteri</h4>
-                <span class="author-position">Owner, Serenity Yoga</span>
-              </div>
+      <div class="testimonial-spotlight">
+        <div class="quote-icon">
+          <i class="fas fa-quote-left"></i>
+        </div>
+        <p class="testimonial-text">"Rafli bikin website pameran cyber kami jadi kelas banget!. Hasilnya bagus lah
+          pokoknya, gk sia sia pilih jasa mas nya. Recommended banget!"</p>
+        <div class="testimonial-author">
+          <img src="a.png" alt="Klien" class="author-img">
+          <div class="author-info">
+            <h4>anon</h4>
+            <span class="author-position">Pm projek pameran cyber</span>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
             </div>
           </div>
         </div>
@@ -550,16 +2099,19 @@
   <!-- Contact Section -->
   <section id="contact" class="contact">
     <div class="container">
-      <h2>Get In Touch</h2>
+      <h2>Mari Wujudkan Website Impian Anda</h2>
       <div class="contact-content">
         <div class="contact-info">
           <div class="neon-border">
             <div class="glass">
-              <h3>Let's Create Your Website</h3>
-              <p>Need a website for your business, portfolio, or special event? I make the process easy and affordable,
-                even if you're not tech-savvy!</p>
-              <p>Just fill out the form or contact me directly. We'll discuss your needs, and I'll create a beautiful,
-                easy-to-use website that helps you achieve your goals.</p>
+              <h3>Mau Bikin Website yang Punya Karakter?</h3>
+              <p>Entah kamu seorang kreator, freelancer, pelajar, atau siapa pun yang ingin punya ruang online yang
+                benar-benar
+                mencerminkan dirimu—aku bisa bantu mewujudkannya lewat desain yang personal dan penuh makna.</p>
+              <p>Ceritain aja ide dan gayamu, nanti aku bantu bentukkannya jadi website yang unik dan otentik. Nggak
+                perlu paham
+                teknis, yang penting kamu tahu apa yang mau ditunjukkan ke dunia.</p>
+
 
               <div class="contact-item">
                 <div class="contact-icon">
@@ -567,59 +2119,32 @@
                 </div>
                 <div>
                   <h4>Email</h4>
-                  <p>raflijet07@gmail.com</p>
+                  <p>mohamadraflim@gmail.com</p>
                 </div>
               </div>
-
-              <!-- <div class="contact-item">
-                <div class="contact-icon">
-                  <i class="fas fa-phone"></i>
-                </div>
-                <div>
-                  <h4>WhatsApp</h4>
-                  <p>+62 812 3456 7890</p>
-                </div>
-              </div> -->
 
               <div class="contact-item">
                 <div class="contact-icon">
                   <i class="fas fa-map-marker-alt"></i>
                 </div>
                 <div>
-                  <h4>Location</h4>
+                  <h4>Lokasi</h4>
                   <p>Jakarta, Indonesia</p>
                 </div>
               </div>
+
+              <div style="margin-top: 2rem; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 10px;">
+                <h4 style="color: #eccb5f; margin-bottom: 0.5rem;">💡 Konsultasi Sekarang Juga</h4>
+                <p style="font-size: 0.9rem; margin: 0;">
+                  Masih bingung mau bikin website seperti apa? Tenang, saya bisa bantu cari arah desain yang paling
+                  cocok dengan gaya,
+                  tujuan, dan karakter kamu.
+                </p>
+              </div>
+
             </div>
           </div>
         </div>
-
-        <!-- <div class="contact-form">
-          <h3>Send Me a Message</h3>
-          <form>
-            <div class="form-group">
-              <label class="form-label">Name</label>
-              <input type="text" class="form-input" placeholder="Your Name">
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Email</label>
-              <input type="email" class="form-input" placeholder="Your Email">
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Subject</label>
-              <input type="text" class="form-input" placeholder="Subject">
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Message</label>
-              <textarea class="form-input form-textarea" placeholder="Your Message"></textarea>
-            </div>
-
-            <button type="submit" class="btn">Send Message</button>
-          </form>
-        </div> -->
       </div>
     </div>
   </section>
@@ -630,312 +2155,208 @@
       <div class="footer-logo">RAFLI<span class="text-gradient">_MAULANA</span></div>
 
       <div class="footer-social">
-        <a href="" class="social-link"><i class="fab fa-github"></i></a>
-        <a href="https://id.linkedin.com/in/mohamad-rafli-maulana" class="social-link"><i class="fab fa-linkedin"></i></a>
-        <!-- <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
-        <a href="#" class="social-link"><i class="fab fa-behance"></i></a> -->
+        <a href="" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://id.linkedin.com/in/mohamad-rafli-maulana" class="social-link" title="LinkedIn"><i
+            class="fab fa-linkedin"></i></a>
       </div>
 
       <div class="footer-nav">
-        <a href="#home" class="footer-nav-link">Home</a>
-        <a href="#about" class="footer-nav-link">About</a>
-        <a href="#experience" class="footer-nav-link">Experience</a>
-        <a href="#projects" class="footer-nav-link">Projects</a>
-        <a href="#contact" class="footer-nav-link">Contact</a>
+        <a href="#home" class="footer-nav-link">Beranda</a>
+        <a href="#about" class="footer-nav-link">Tentang</a>
+        <a href="#projects" class="footer-nav-link">Portofolio</a>
+        <a href="#contact" class="footer-nav-link">Kontak</a>
       </div>
 
-      <p class="copyright">&copy; 2025 rafli_maulana. All Rights Reserved.</p>
+      <p class="copyright">&copy; 2025 Rafli Maulana. Hak Cipta Dilindungi.</p>
     </div>
   </footer>
 
   <script>
-   
-    window.addEventListener('load', () => {
-      const preloader = document.querySelector('.preloader');
-      preloader.classList.add('hide');
-    });
-
-    const cursor = document.querySelector('.custom-cursor');
-    const cursorDot = document.querySelector('.cursor-dot');
-
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-
-      cursorDot.style.left = e.clientX + 'px';
-      cursorDot.style.top = e.clientY + 'px';
-    });
-
-    document.addEventListener('mousedown', () => {
-      cursor.style.width = '15px';
-      cursor.style.height = '15px';
-      cursor.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
-    });
-
-    document.addEventListener('mouseup', () => {
-      cursor.style.width = '20px';
-      cursor.style.height = '20px';
-      cursor.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
-    });
-
-    // Add hover effect for interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .project-card, .experience-card, .stat-card');
-
-    interactiveElements.forEach(element => {
-      element.addEventListener('mouseenter', () => {
-        cursor.style.width = '50px';
-        cursor.style.height = '50px';
-        cursor.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-
-        cursorDot.style.transform = 'translate(-50%, -50%) scale(0)';
-      });
-
-      element.addEventListener('mouseleave', () => {
-        cursor.style.width = '20px';
-        cursor.style.height = '20px';
-        cursor.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
-
-        cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
-      });
-    });
-
-    // Scroll Progress
-    window.addEventListener('scroll', () => {
-      const scrollProgress = document.querySelector('.scroll-progress');
-      const totalHeight = document.body.scrollHeight - window.innerHeight;
-      const progress = (window.pageYOffset / totalHeight) * 100;
-
-      scrollProgress.style.width = progress + '%';
-
-      // Show/hide back to top button
-      const backToTop = document.querySelector('.back-to-top');
-
-      if (window.pageYOffset > 300) {
-        backToTop.classList.add('active');
-      } else {
-        backToTop.classList.remove('active');
+    // Cache frequently accessed DOM elements
+    const DOMCache = {
+      preloader: null,
+      cursor: null,
+      cursorDot: null,
+      scrollProgress: null,
+      backToTop: null,
+      navbar: null,
+      menu: null,
+      mobileNavToggle: null,
+      typingElement: null,
+      init() {
+        this.preloader = document.querySelector('.preloader');
+        this.cursor = document.querySelector('.custom-cursor');
+        this.cursorDot = document.querySelector('.cursor-dot');
+        this.scrollProgress = document.querySelector('.scroll-progress');
+        this.backToTop = document.querySelector('.back-to-top');
+        this.navbar = document.querySelector('.navbar');
+        this.menu = document.querySelector('.menu');
+        this.mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+        this.typingElement = document.querySelector('.typing-effect');
       }
+    };
 
-      // Navbar background
-      const navbar = document.querySelector('.navbar');
+    // Optimized scroll handler
+    let scrollTicking = false;
+    let mouseMoveTicking = false;
 
-      if (window.pageYOffset > 50) {
-        navbar.style.padding = '0.5rem 0';
-        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-      } else {
-        navbar.style.padding = '1rem 0';
-        navbar.style.boxShadow = 'none';
+    function optimizedScrollHandler() {
+      if (!scrollTicking) {
+        requestAnimationFrame(() => {
+          const scrollY = window.pageYOffset;
+          const totalHeight = document.body.scrollHeight - window.innerHeight;
+          const progress = (scrollY / totalHeight) * 100;
+
+          DOMCache.scrollProgress.style.width = `${progress}%`;
+
+          if (scrollY > 300) {
+            DOMCache.backToTop.classList.add('active');
+          } else {
+            DOMCache.backToTop.classList.remove('active');
+          }
+
+          if (scrollY > 50) {
+            DOMCache.navbar.style.cssText = 'padding: 0.5rem 0; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);';
+          } else {
+            DOMCache.navbar.style.cssText = 'padding: 1rem 0; box-shadow: none;';
+          }
+
+          scrollTicking = false;
+        });
+        scrollTicking = true;
       }
-    });
-
-    // Back to top functionality
-    document.querySelector('.back-to-top').addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-
-    // Scroll to section functionality
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 70,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-
-    // Mobile Navigation Toggle
-    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-    const menu = document.querySelector('.menu');
-
-    mobileNavToggle.addEventListener('click', function () {
-      menu.classList.toggle('active');
-      const isOpen = menu.classList.contains('active');
-      mobileNavToggle.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-    });
-
-    // Close menu when clicking on a menu item
-    document.querySelectorAll('.menu-item').forEach(item => {
-      item.addEventListener('click', function () {
-        menu.classList.remove('active');
-        mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
-      });
-    });
-
-    // Create particles dynamically
-    const particlesContainer = document.querySelector('.particles');
-
-    for (let i = 0; i < 20; i++) {
-      const particle = document.createElement('div');
-      particle.classList.add('particle');
-
-      // Random position
-      const posX = Math.random() * 100;
-      const posY = Math.random() * 100;
-
-      // Random size
-      const size = Math.random() * 3 + 1;
-
-      // Random animation delay
-      const delay = Math.random() * 10;
-
-      particle.style.top = posY + '%';
-      particle.style.left = posX + '%';
-      particle.style.width = size + 'px';
-      particle.style.height = size + 'px';
-      particle.style.animationDelay = delay + 's';
-
-      particlesContainer.appendChild(particle);
     }
 
-    // NEW: Typing Animation
-    document.addEventListener('DOMContentLoaded', function () {
+    // Optimized mouse move handler
+    function optimizedMouseMoveHandler(e) {
+      if (!mouseMoveTicking) {
+        requestAnimationFrame(() => {
+          const x = `${e.clientX}px`;
+          const y = `${e.clientY}px`;
+
+          DOMCache.cursor.style.cssText = `left: ${x}; top: ${y};`;
+          DOMCache.cursorDot.style.cssText = `left: ${x}; top: ${y};`;
+
+          mouseMoveTicking = false;
+        });
+        mouseMoveTicking = true;
+      }
+    }
+
+    // Typing animation with Indonesian text
+    function setupTypingAnimation() {
       const texts = [
-        "websites that grow your business",
-        "designs that convert visitors",
-        "experiences users love",
-        "brands that stand out"
+        "website proper untuk bisnis ",
+        "company profile yang sesuai citra perusahaan ",
+        "portofolio unik dan beda",
       ];
 
-      const typingElement = document.querySelector('.typing-effect');
       let textIndex = 0;
 
       function updateText() {
-        typingElement.textContent = '';
-
         const currentText = texts[textIndex];
         textIndex = (textIndex + 1) % texts.length;
 
-        // Reset the animation by removing and adding the element
-        typingElement.style.animation = 'none';
+        DOMCache.typingElement.textContent = '';
+        DOMCache.typingElement.style.animation = 'none';
+
         setTimeout(() => {
-          typingElement.style.animation = 'typing 4s steps(30) infinite, blink-caret 0.75s step-end infinite';
-          typingElement.textContent = currentText;
-        }, 10);
+          DOMCache.typingElement.style.animation = 'typing 4s steps(30) infinite, blink-caret 0.75s step-end infinite';
+          DOMCache.typingElement.textContent = currentText;
+        }, 1);
 
         setTimeout(updateText, 4000);
       }
 
       updateText();
-    });
+    }
 
-    // Add these to your existing JavaScript to improve mobile experience
+    // Initialize
+    function initialize() {
+      DOMCache.init();
 
-      document.addEventListener('DOMContentLoaded', function () {
-        // Check if we're on mobile
-        const isMobile = window.innerWidth <= 768;
+      // Event listeners
+      window.addEventListener('scroll', optimizedScrollHandler, { passive: true });
+      document.addEventListener('mousemove', optimizedMouseMoveHandler, { passive: true });
 
-        // Adjust footer spacing based on viewport height
-        function adjustFooterSpacing() {
-          const viewportHeight = window.innerHeight;
-          const footer = document.querySelector('.footer');
-          const footerNav = document.querySelector('.footer-nav');
+      // Cursor effects
+      document.addEventListener('mousedown', () => {
+        DOMCache.cursor.style.cssText += 'width: 15px; height: 15px; background-color: rgba(255, 255, 255, 0.5);';
+      });
 
-          // On very small screens, ensure footer navigation is visible
-          if (viewportHeight < 700 && isMobile) {
-            footer.style.paddingBottom = '7rem';
+      document.addEventListener('mouseup', () => {
+        DOMCache.cursor.style.cssText += 'width: 20px; height: 20px; background-color: rgba(255, 255, 255, 0.3);';
+      });
 
-            // Adjust footer nav to fit better on small screens
-            if (footerNav) {
-              const links = footerNav.querySelectorAll('.footer-nav-link');
-              links.forEach(link => {
-                link.style.padding = '0.25rem';
-              });
+      // Interactive elements
+      document.addEventListener('mouseenter', (e) => {
+        const target = e.target.closest('a, button, .project-card, .stat-card');
+        if (target) {
+          DOMCache.cursor.style.cssText += 'width: 50px; height: 50px; background-color: rgba(255, 255, 255, 0.1);';
+          DOMCache.cursorDot.style.transform = 'translate(-50%, -50%) scale(0)';
+        }
+      }, true);
+
+      document.addEventListener('mouseleave', (e) => {
+        const target = e.target.closest('a, button, .project-card, .stat-card');
+        if (target) {
+          DOMCache.cursor.style.cssText += 'width: 20px; height: 20px; background-color: rgba(255, 255, 255, 0.3);';
+          DOMCache.cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
+        }
+      }, true);
+
+      // Mobile navigation
+      DOMCache.mobileNavToggle.addEventListener('click', () => {
+        DOMCache.menu.classList.toggle('active');
+        const isOpen = DOMCache.menu.classList.contains('active');
+        DOMCache.mobileNavToggle.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+      });
+
+      // Smooth scroll
+      document.addEventListener('click', (e) => {
+        const anchor = e.target.closest('a[href^="#"]');
+        if (anchor) {
+          e.preventDefault();
+
+          const targetId = anchor.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            if (DOMCache.menu.classList.contains('active')) {
+              DOMCache.menu.classList.remove('active');
+              DOMCache.mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
             }
-          }
-        }
 
-        // Ensure photo and orbit stay within boundaries
-        function adjustProfileImageSize() {
-          if (isMobile) {
-            const profileImg = document.querySelector('.profile-img');
-            const heroSection = document.querySelector('.hero');
-
-            if (profileImg && heroSection) {
-              // Make sure image doesn't exceed container size
-              const maxSize = Math.min(heroSection.clientWidth * 0.7, 250);
-              profileImg.style.maxWidth = `${maxSize}px`;
-            }
-          }
-        }
-
-        // Fix for mobile menu when viewing in landscape
-        function adjustMobileMenu() {
-          const isLandscape = window.innerWidth > window.innerHeight;
-          const menu = document.querySelector('.menu');
-
-          if (isMobile && isLandscape && menu) {
-            menu.style.overflowY = 'auto';
-            menu.style.paddingTop = '4rem';
-            menu.style.paddingBottom = '4rem';
-          }
-        }
-
-        // Improve back to top button positioning
-        function adjustBackToTopButton() {
-          const backToTop = document.querySelector('.back-to-top');
-
-          if (backToTop && isMobile) {
-            // Ensure the button doesn't overlap with browser UI elements
-            backToTop.style.bottom = '4.5rem';
-            backToTop.style.right = '1.5rem';
-          }
-        }
-
-        // Run all adjustments initially
-        adjustFooterSpacing();
-        adjustProfileImageSize();
-        adjustMobileMenu();
-        adjustBackToTopButton();
-
-        // Rerun on resize
-        window.addEventListener('resize', function () {
-          adjustFooterSpacing();
-          adjustProfileImageSize();
-          adjustMobileMenu();
-          adjustBackToTopButton();
-        });
-
-        // Improve scrolling for mobile
-        if (isMobile) {
-          // Smooth scroll for all internal links
-          document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-              e.preventDefault();
-
-              const targetId = this.getAttribute('href');
-              const targetElement = document.querySelector(targetId);
-
-              if (targetElement) {
-                // Close mobile menu if it's open
-                const menu = document.querySelector('.menu');
-                const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-
-                if (menu && menu.classList.contains('active')) {
-                  menu.classList.remove('active');
-                  mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                }
-
-                // Scroll with offset for fixed header
-                window.scrollTo({
-                  top: targetElement.offsetTop - 60,
-                  behavior: 'smooth'
-                });
-              }
+            const offsetTop = targetElement.offsetTop - (window.innerWidth <= 768 ? 60 : 70);
+            window.scrollTo({
+              top: offsetTop,
+              behavior: 'smooth'
             });
-          });
+          }
         }
       });
+
+      // Back to top
+      DOMCache.backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Setup typing animation
+      setupTypingAnimation();
+    }
+
+    // On load
+    window.addEventListener('load', () => {
+      DOMCache.preloader.classList.add('hide');
+      initialize();
+    });
+
+    // Initialize on DOM ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initialize);
+    } else {
+      initialize();
+    }
   </script>
 </body>
 
