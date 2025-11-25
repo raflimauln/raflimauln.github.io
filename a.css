@@ -127,6 +127,12 @@
         width: 200px;
         height: 200px;
       }
+
+        .weird-nav.nav-melayang {
+    background: rgba(10, 14, 39, 0.95); 
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--electric-mint);
+  }
     }
 
     @keyframes float {
