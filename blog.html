@@ -89,17 +89,26 @@
       text-shadow: 2px 2px 0 var(--deep-ink);
     }
 
-    .article-content {
-      font-family: 'Space Mono', monospace;
-      font-size: 1rem;
-      line-height: 1.8;
-      color: #ddd;
-      /* INI KUNCI AGAR \n DI JSON JADI PARAGRAF */
-      white-space: pre-wrap; 
-      text-align: justify;
-    }
+  .article-content {
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem; 
+  
 
-    /* Loading State */
+  text-align: left; 
+
+  line-height: 1.8; 
+  
+
+  color: #d1d5db;
+  
+ 
+  letter-spacing: -0.01em; 
+
+
+  white-space: pre-wrap; 
+}
+
+
     .loading-text {
       text-align: center;
       color: var(--electric-mint);
@@ -117,7 +126,7 @@
       50% { opacity: 0; }
     }
 
-    /* Responsif untuk HP */
+
     @media (max-width: 768px) {
       .blog-wrapper { padding-top: 100px; padding-left: 20px; padding-right: 20px; }
       .article-card { padding: 25px; }
