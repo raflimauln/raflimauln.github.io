@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rafli mauln - logs</title>
+  <link rel="stylesheet" href="a.css">
+
+  <style>
+    /* --- OVERRIDE STYLE KHUSUS HALAMAN BLOG --- */
+    body {
+      overflow-y: auto; /* Memastikan bisa discroll */
+    }
+
+    .blog-wrapper {
+      padding: 120px 20px 60px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+    }
+
+    .back-btn {
+      position: fixed;
+      top: 30px;
+      left: 30px;
+      font-family: 'Space Mono', monospace;
+      text-decoration: none;
+      color: var(--electric-mint);
+      border: 1px solid var(--electric-mint);
+      padding: 10px 20px;
+      background: rgba(10, 14, 39, 0.8);
+      backdrop-filter: blur(5px);
+      z-index: 100;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .back-btn:hover {
+      background: var(--electric-mint);
+      color: var(--deep-ink);
+      box-shadow: 0 0 15px var(--electric-mint);
+    }
+
+    .article-card {
+      background: rgba(42, 42, 42, 0.5); /* Semi transparan noise-gray */
+      border: 1px solid var(--chaos-purple);
+      padding: 40px;
+      margin-bottom: 50px;
+      position: relative;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      opacity: 0; /* Default hide untuk animasi masuk */
+      animation: slideUp 0.8s ease forwards;
+    }
+
+    .article-card:hover {
+      border-color: var(--rust-orange);
+      background: rgba(42, 42, 42, 0.8);
+    }
+
+    /* Dekorasi sudut kartu */
+    .article-card::before, .article-card::after {
+      content: '+';
+      position: absolute;
+      color: var(--electric-mint);
+      font-size: 1.5rem;
+    }
+    .article-card::before { top: -10px; left: -10px; }
+    .article-card::after { bottom: -10px; right: -10px; }
+
+    .article-meta {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed var(--electric-mint);
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--chaos-purple);
+    }
+
+    .article-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--warm-cream);
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 0 var(--deep-ink);
+    }
+
+    .article-content {
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #ddd;
+      /* INI KUNCI AGAR \n DI JSON JADI PARAGRAF */
+      white-space: pre-wrap; 
+      text-align: justify;
+    }
+
+    /* Loading State */
+    .loading-text {
+      text-align: center;
+      color: var(--electric-mint);
+      font-family: monospace;
+      margin-top: 50px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    /* Responsif untuk HP */
+    @media (max-width: 768px) {
+      .blog-wrapper { padding-top: 100px; padding-left: 20px; padding-right: 20px; }
+      .article-card { padding: 25px; }
+      .article-title { font-size: 2.2rem; }
+      .back-btn { top: 20px; left: 20px; padding: 8px 15px; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+  <div class="orb orb1" style="top: 10%"></div>
+  <div class="orb orb2" style="bottom: 10%"></div>
+  
+  <a href="index.html" class="back-btn">&lt; SYSTEM.EXIT()</a>
+
+  <div class="blog-wrapper">
+    <div style="margin-bottom: 40px; border-left: 4px solid var(--rust-orange); padding-left: 20px;">
+      <h1 style="font-family: 'Bebas Neue'; font-size: 2rem; color: var(--rust-orange);">// DEV_LOGS</h1>
+      <p style="font-family: monospace; color: var(--electric-mint); font-size: 0.8rem;">> Accessing thought patterns...</p>
+    </div>
+
+    <div id="articles-container">
+      <div class="loading-text">CONNECTING TO DATABASE...</div>
+    </div>
+  </div>
+
+  <script>
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorOutline = document.querySelector('.cursor-outline');
+
+    if (window.matchMedia("(pointer: fine)").matches) {
+      window.addEventListener('mousemove', e => {
+        const posX = e.clientX;
+        const posY = e.clientY;
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+        
+        cursorOutline.animate({
+          left: `${posX - 15}px`,
+          top: `${posY - 15}px`
+        }, { duration: 500, fill: "forwards" });
+      });
+    }
+    const container = document.getElementById('articles-container');
+
+    fetch('articles.json')
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
+      })
+      .then(data => {
+     
+        container.innerHTML = '';
+
+        // Urutkan artikel dari yang terbaru (opsional, jika ID makin besar makin baru)
+        // data.sort((a, b) => b.id - a.id); 
+
+      
+        data.forEach(article => {
+          const card = document.createElement('article');
+          card.className = 'article-card';
+          
+          card.innerHTML = `
+            <div class="article-meta">
+              <span>DATE: ${article.date}</span>
+              <span style="color: var(--electric-mint)">CAT: ${article.category}</span>
+            </div>
+            <h2 class="article-title">${article.title}</h2>
+            <div class="article-content">${article.content}</div>
+          `;
+          
+          container.appendChild(card);
+        });
+
+ 
+        document.body.style.opacity = '1';
+      })
+      .catch(error => {
+        container.innerHTML = `
+          <div class="article-card" style="border-color: red; color: red;">
+            <h2 style="font-family: monospace">ERROR 404: DATA CORRUPTED</h2>
+            <p style="font-family: monospace">Could not load thoughts. Check console.<br>${error}</p>
+          </div>
+        `;
+      });
+  </script>
+</body>
+</html>
