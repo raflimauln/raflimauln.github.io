@@ -9,7 +9,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
   <style>
- 
+    /* BLOG OVERRIDES (Minimal) */
     .blog-wrapper {
       padding: 120px 20px 50px;
       max-width: 1200px;
@@ -319,6 +319,7 @@
   <div class="cursor-dot"></div>
   <div class="cursor-outline"></div>
 
+
   <div class="bg-elements" aria-hidden="true"></div>
 
   <div class="controls-container">
@@ -335,12 +336,14 @@
     <a href="index.html#contact" class="nav-item cta-special" data-key="nav_contact">KONTAK</a>
   </nav>
 
+
   <div id="reading-modal" class="modal-overlay">
     <div class="close-modal-btn modal-close" onclick="closeModal()">×</div>
     <div class="modal-content">
       <div id="modal-body" class="modal-article-body"></div>
     </div>
   </div>
+
 
   <div class="blog-wrapper">
     <div class="blog-header">
@@ -354,7 +357,6 @@
   </div>
 
   <script>
-
     const commonDict = {
       id: {
         nav_who: "SIAPA SAYA?", nav_what: "ARSENAL", nav_logs: "CATATAN", nav_contact: "KONTAK",
@@ -368,7 +370,7 @@
       }
     };
 
-    // Default language is hard to pass across pages without URL params, defaulting to ID for now or checking LocalStorage later
+   
     let currentLang = 'id';
 
     function updateBlogLanguage() {
@@ -379,7 +381,7 @@
       });
     }
 
-
+   
     const htmlElement = document.documentElement;
     const themeToggle = document.getElementById('blog-theme-toggle');
     const savedTheme = localStorage.getItem('theme') || 'dark';
@@ -392,7 +394,7 @@
       localStorage.setItem('theme', newTheme);
     });
 
-    /* --- 3. CURSOR LOGIC --- */
+
     const isDesktop = window.matchMedia("(pointer: fine)").matches;
     if (isDesktop) {
       const cursorDot = document.querySelector('.cursor-dot');
@@ -411,6 +413,7 @@
         }
       });
     }
+
 
     const container = document.getElementById('articles-container');
     const modal = document.getElementById('reading-modal');
