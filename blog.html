@@ -1,137 +1,316 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>rafli mauln - logs</title>
-  <link rel="stylesheet" href="a.css">
+  <title>Rafli Maulana - Dev Logs</title>
+  <link rel="stylesheet" href="a2.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
   <style>
-  
-    body {
-      overflow-y: auto; 
-    }
-
+ 
     .blog-wrapper {
-      padding: 120px 20px 60px 20px;
-      max-width: 800px;
+      padding: 120px 20px 50px;
+      max-width: 1200px;
       margin: 0 auto;
       position: relative;
       z-index: 10;
     }
 
-    .back-btn {
-      position: fixed;
-      top: 30px;
-      left: 30px;
-      font-family: 'Space Mono', monospace;
-      text-decoration: none;
-      color: var(--electric-mint);
-      border: 1px solid var(--electric-mint);
-      padding: 10px 20px;
-      background: rgba(10, 14, 39, 0.8);
-      backdrop-filter: blur(5px);
-      z-index: 100;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
+    .blog-header {
+      margin-bottom: 60px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 20px;
     }
 
-    .back-btn:hover {
-      background: var(--electric-mint);
-      color: var(--deep-ink);
-      box-shadow: 0 0 15px var(--electric-mint);
+    .blog-title {
+      font-family: var(--font-heading);
+      font-size: clamp(3rem, 6vw, 5rem);
+      line-height: 0.9;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    .blog-subtitle {
+      font-family: var(--font-mono);
+      color: var(--accent);
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    :root[data-theme="light"] .blog-subtitle {
+      color: #000;
+      font-weight: bold;
+    }
+
+    #articles-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
     }
 
     .article-card {
-      background: rgba(42, 42, 42, 0.5); /* Semi transparan noise-gray */
-      border: 1px solid var(--chaos-purple);
-      padding: 40px;
-      margin-bottom: 50px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      transition: all 0.3s ease;
       position: relative;
-      transition: transform 0.3s ease, border-color 0.3s ease;
-      opacity: 0; /* Default hide untuk animasi masuk */
-      animation: slideUp 0.8s ease forwards;
+    }
+
+    :root[data-theme="light"] .article-card {
+      background: #FFF;
+      border: 3px solid #000;
+      box-shadow: 8px 8px 0 #000;
     }
 
     .article-card:hover {
-      border-color: var(--rust-orange);
-      background: rgba(42, 42, 42, 0.8);
+      border-color: var(--accent);
+      transform: translateY(-5px);
     }
 
-    /* Dekorasi sudut kartu */
-    .article-card::before, .article-card::after {
-      content: '+';
-      position: absolute;
-      color: var(--electric-mint);
-      font-size: 1.5rem;
+    :root[data-theme="light"] .article-card:hover {
+      border-color: #000;
+      transform: translate(-4px, -4px);
+      box-shadow: 12px 12px 0 var(--highlight);
     }
-    .article-card::before { top: -10px; left: -10px; }
-    .article-card::after { bottom: -10px; right: -10px; }
+
+    .card-image-wrapper {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-color);
+      background: #000;
+      position: relative;
+    }
+
+    .card-image-wrapper::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 255, 136, 0.2);
+      mix-blend-mode: overlay;
+      transition: 0.4s;
+      pointer-events: none;
+    }
+
+    .article-card:hover .card-image-wrapper::after {
+      opacity: 0;
+    }
+
+    :root[data-theme="light"] .card-image-wrapper::after {
+      display: none;
+    }
+
+    :root[data-theme="light"] .card-image-wrapper {
+      border-bottom: 3px solid #000;
+    }
+
+    .article-img-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      filter: grayscale(100%) contrast(1.2);
+    }
+
+    .article-card:hover .article-img-thumb {
+      transform: scale(1.1);
+      filter: grayscale(0%);
+    }
+
+    .card-content-preview {
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
 
     .article-meta {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 10px;
       display: flex;
       justify-content: space-between;
-      border-bottom: 1px dashed var(--electric-mint);
-      padding-bottom: 15px;
-      margin-bottom: 25px;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.85rem;
-      color: var(--chaos-purple);
     }
 
-    .article-title {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 3rem;
+    :root[data-theme="light"] .article-meta {
+      color: #000;
+      font-weight: bold;
+    }
+
+    .preview-title {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      margin-bottom: 15px;
       line-height: 1;
-      color: var(--warm-cream);
-      margin-bottom: 30px;
-      text-shadow: 2px 2px 0 var(--deep-ink);
+      color: var(--text-main);
     }
 
-  .article-content {
-  font-family: 'Space Mono', monospace;
-  font-size: 1rem; 
-  
+    :root[data-theme="light"] .preview-title {
+      color: #000;
+      font-weight: 900;
+    }
 
-  text-align: left; 
+    .preview-text {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text-main);
+      opacity: 0.7;
+      margin-bottom: 20px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex-grow: 1;
+      line-height: 1.6;
+    }
 
-  line-height: 1.8; 
-  
+    :root[data-theme="light"] .preview-text {
+      color: #333;
+      opacity: 1;
+      font-weight: 500;
+    }
 
-  color: #d1d5db;
-  
- 
-  letter-spacing: -0.01em; 
-
-
-  white-space: pre-wrap; 
-}
-
-
-    .loading-text {
+    .read-btn {
+      margin-top: auto;
+      font-family: var(--font-mono);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 10px;
       text-align: center;
-      color: var(--electric-mint);
-      font-family: monospace;
-      margin-top: 50px;
-      animation: blink 1s infinite;
+      transition: 0.3s;
+      font-size: 0.8rem;
+      font-weight: bold;
     }
 
-    @keyframes slideUp {
-      from { transform: translateY(50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    .article-card:hover .read-btn {
+      background: var(--accent);
+      color: var(--bg-color);
     }
 
-    @keyframes blink {
-      50% { opacity: 0; }
+    :root[data-theme="light"] .read-btn {
+      border: 2px solid #000;
+      color: #000;
+      background: #FFF;
     }
 
+    :root[data-theme="light"] .article-card:hover .read-btn {
+      background: #000;
+      color: #FFF;
+      box-shadow: 4px 4px 0 var(--highlight);
+      transform: translate(-2px, -2px);
+    }
+
+    /* MODAL */
+    .modal-overlay {
+      background: rgba(10, 14, 39, 0.98);
+      z-index: 12000;
+    }
+
+    :root[data-theme="light"] .modal-overlay {
+      background: rgba(255, 255, 255, 0.98);
+    }
+
+    .modal-content {
+      max-width: 800px;
+      padding: 0;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
+    .modal-article-body {
+      padding: 40px 0 100px;
+    }
+
+    .modal-article-img {
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: cover;
+      margin: 30px 0;
+      border: 1px solid var(--border-color);
+    }
+
+    :root[data-theme="light"] .modal-article-img {
+      border: 3px solid #000;
+      box-shadow: 10px 10px 0 #000;
+    }
+
+    .full-content {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-main);
+    }
+
+    :root[data-theme="light"] .full-content {
+      color: #111;
+    }
+
+    /* NAV OVERRIDES */
+    .weird-nav {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      z-index: 100;
+    }
 
     @media (max-width: 768px) {
-      .blog-wrapper { padding-top: 100px; padding-left: 20px; padding-right: 20px; }
-      .article-card { padding: 25px; }
-      .article-title { font-size: 2.2rem; }
-      .back-btn { top: 20px; left: 20px; padding: 8px 15px; font-size: 0.8rem; }
+      .weird-nav {
+        position: fixed !important;
+        top: auto !important;
+        right: auto !important;
+        bottom: 30px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        flex-direction: row;
+        width: 90%;
+        max-width: 400px;
+        background: rgba(10, 14, 39, 0.85);
+        border: 1px solid var(--accent);
+        border-radius: 50px;
+        padding: 10px;
+        box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        z-index: 9999;
+        backdrop-filter: blur(10px);
+      }
+
+      .weird-nav .nav-item {
+        flex: 1;
+        text-align: center;
+        border: none;
+        background: transparent;
+        padding: 8px 5px;
+        font-size: 0.7rem;
+        clip-path: none;
+        margin: 0;
+        opacity: 0.6;
+        color: var(--text-main);
+      }
+
+      .weird-nav .nav-item.active {
+        background: var(--accent);
+        color: #000;
+        opacity: 1;
+        border-radius: 20px;
+        font-weight: bold;
+        box-shadow: 0 0 10px var(--accent);
+      }
+
+      :root[data-theme="light"] .weird-nav {
+        background: rgba(255, 255, 255, 0.9);
+        border: 2px solid #000;
+      }
     }
   </style>
 </head>
@@ -139,81 +318,148 @@
 <body>
   <div class="cursor-dot"></div>
   <div class="cursor-outline"></div>
-  <div class="orb orb1" style="top: 10%"></div>
-  <div class="orb orb2" style="bottom: 10%"></div>
-  
-  <a href="index.html" class="back-btn">&lt; SYSTEM.EXIT()</a>
+
+  <div class="bg-elements" aria-hidden="true"></div>
+
+  <div class="controls-container">
+    <a href="index.html" class="ctrl-btn icon-btn" aria-label="Back to Home">
+      <span data-key="btn_home">⌂ HOME</span>
+    </a>
+    <button id="blog-theme-toggle" class="theme-toggle-btn" data-key="mode_btn">ALCHEMIST MODE</button>
+  </div>
+
+  <nav class="weird-nav">
+    <a href="index.html#about" class="nav-item" data-key="nav_who">SIAPA SAYA?</a>
+    <a href="index.html#skills" class="nav-item" data-key="nav_what">ARSENAL</a>
+    <a href="#" class="nav-item active" data-key="nav_logs">CATATAN</a>
+    <a href="index.html#contact" class="nav-item cta-special" data-key="nav_contact">KONTAK</a>
+  </nav>
+
+  <div id="reading-modal" class="modal-overlay">
+    <div class="close-modal-btn modal-close" onclick="closeModal()">×</div>
+    <div class="modal-content">
+      <div id="modal-body" class="modal-article-body"></div>
+    </div>
+  </div>
 
   <div class="blog-wrapper">
-    <div style="margin-bottom: 40px; border-left: 4px solid var(--rust-orange); padding-left: 20px;">
-      <h1 style="font-family: 'Bebas Neue'; font-size: 2rem; color: var(--rust-orange);">// DEV_LOGS</h1>
-      <p style="font-family: monospace; color: var(--electric-mint); font-size: 0.8rem;">> Accessing thought patterns...</p>
+    <div class="blog-header">
+      <h1 class="blog-title">DEV_LOGS_DATABASE</h1>
+      <p class="blog-subtitle" data-key="blog_sub">> Accessing thought patterns... Select a file to decrypt.</p>
     </div>
 
     <div id="articles-container">
-      <div class="loading-text">CONNECTING TO DATABASE...</div>
+      <div style="font-family: var(--font-mono); color: var(--accent);">CONNECTING TO DATABASE...</div>
     </div>
   </div>
 
   <script>
-    const cursorDot = document.querySelector('.cursor-dot');
-    const cursorOutline = document.querySelector('.cursor-outline');
 
-    if (window.matchMedia("(pointer: fine)").matches) {
-      window.addEventListener('mousemove', e => {
-        const posX = e.clientX;
-        const posY = e.clientY;
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
-        
-        cursorOutline.animate({
-          left: `${posX - 15}px`,
-          top: `${posY - 15}px`
-        }, { duration: 500, fill: "forwards" });
+    const commonDict = {
+      id: {
+        nav_who: "SIAPA SAYA?", nav_what: "ARSENAL", nav_logs: "CATATAN", nav_contact: "KONTAK",
+        btn_home: "⌂ BERANDA", mode_btn: "GANTI MODE", blog_sub: "> Mengakses pola pikiran... Pilih file untuk dekripsi.",
+        read_btn: "BACA FILE >"
+      },
+      en: {
+        nav_who: "WHO AM I?", nav_what: "ARSENAL", nav_logs: "LOGS", nav_contact: "CONTACT",
+        btn_home: "⌂ HOME", mode_btn: "SWITCH MODE", blog_sub: "> Accessing thought patterns... Select a file to decrypt.",
+        read_btn: "DECRYPT FILE >"
+      }
+    };
+
+    // Default language is hard to pass across pages without URL params, defaulting to ID for now or checking LocalStorage later
+    let currentLang = 'id';
+
+    function updateBlogLanguage() {
+      const dict = commonDict[currentLang];
+      document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (dict[key]) el.textContent = dict[key];
       });
     }
+
+
+    const htmlElement = document.documentElement;
+    const themeToggle = document.getElementById('blog-theme-toggle');
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    htmlElement.setAttribute('data-theme', savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+
+    /* --- 3. CURSOR LOGIC --- */
+    const isDesktop = window.matchMedia("(pointer: fine)").matches;
+    if (isDesktop) {
+      const cursorDot = document.querySelector('.cursor-dot');
+      const cursorOutline = document.querySelector('.cursor-outline');
+      gsap.set(cursorDot, { xPercent: -50, yPercent: -50 });
+      gsap.set(cursorOutline, { xPercent: -50, yPercent: -50 });
+      window.addEventListener('mousemove', (e) => {
+        gsap.set(cursorDot, { x: e.clientX, y: e.clientY });
+        gsap.to(cursorOutline, { x: e.clientX, y: e.clientY, duration: 0.15, ease: "power2.out" });
+      });
+      document.addEventListener('mouseover', (e) => {
+        if (e.target.closest('.article-card') || e.target.closest('button') || e.target.closest('a')) {
+          gsap.to(cursorOutline, { scale: 1.5, duration: 0.2 });
+        } else {
+          gsap.to(cursorOutline, { scale: 1, duration: 0.2 });
+        }
+      });
+    }
+
     const container = document.getElementById('articles-container');
+    const modal = document.getElementById('reading-modal');
+    const modalBody = document.getElementById('modal-body');
 
     fetch('articles.json')
-      .then(response => {
-        if (!response.ok) throw new Error('Network response was not ok');
-        return response.json();
-      })
+      .then(response => response.json())
       .then(data => {
-     
         container.innerHTML = '';
+        data.forEach((article, index) => {
+          const card = document.createElement('article'); card.className = 'article-card';
+          gsap.fromTo(card, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, delay: index * 0.1, ease: "power2.out" });
 
-        // Urutkan artikel dari yang terbaru (opsional, jika ID makin besar makin baru)
-        // data.sort((a, b) => b.id - a.id); 
+          let imageHTML = '';
+          if (article.image && article.image.trim() !== "") {
+            imageHTML = `<div class="card-image-wrapper"><img src="${article.image}" alt="${article.title}" class="article-img-thumb" loading="lazy"></div>`;
+          }
+          const snippet = article.content.length > 150 ? article.content.substring(0, 150) + "..." : article.content;
+          const btnText = commonDict[currentLang].read_btn;
 
-      
-        data.forEach(article => {
-          const card = document.createElement('article');
-          card.className = 'article-card';
-          
-          card.innerHTML = `
-            <div class="article-meta">
-              <span>DATE: ${article.date}</span>
-              <span style="color: var(--electric-mint)">CAT: ${article.category}</span>
-            </div>
-            <h2 class="article-title">${article.title}</h2>
-            <div class="article-content">${article.content}</div>
-          `;
-          
+          card.innerHTML = `${imageHTML}<div class="card-content-preview"><div class="article-meta"><span>${article.date}</span><span>// ${article.category}</span></div><h2 class="preview-title">${article.title}</h2><p class="preview-text">${snippet}</p><div class="read-btn">${btnText}</div></div>`;
+          card.addEventListener('click', () => openModal(article));
           container.appendChild(card);
         });
-
- 
-        document.body.style.opacity = '1';
+        updateBlogLanguage(); // Update static UI
       })
       .catch(error => {
-        container.innerHTML = `
-          <div class="article-card" style="border-color: red; color: red;">
-            <h2 style="font-family: monospace">ERROR 404: DATA CORRUPTED</h2>
-            <p style="font-family: monospace">Could not load thoughts. Check console.<br>${error}</p>
-          </div>
-        `;
+        container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; border: 1px dashed var(--highlight); padding: 40px; color: var(--highlight);"><h2 style="font-family: var(--font-heading); font-size: 2rem;">ERROR 404: DATABASE_DISCONNECTED</h2><p style="font-family: var(--font-mono); margin-top: 10px;">Gagal memuat artikel.</p></div>`;
       });
+
+
+    function openModal(article) {
+      let modalImgHTML = '';
+      if (article.image && article.image.trim() !== "") {
+        modalImgHTML = `<img src="${article.image}" class="modal-article-img" alt="${article.title}">`;
+      }
+      const formattedContent = article.content.split('\n').map(line => line.trim() ? `<p>${line}</p>` : '<br>').join('');
+
+      modalBody.innerHTML = `<div class="article-meta" style="border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 30px;"><span style="color: var(--highlight);">SYSTEM_LOG: ${article.date}</span><span style="float: right;">CAT: ${article.category}</span></div><h1 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1; color: var(--text-main); margin-bottom: 20px;">${article.title}</h1>${modalImgHTML}<div class="full-content">${formattedContent}</div><div style="margin-top: 80px; text-align: center; color: var(--text-main); opacity: 0.5; font-family: var(--font-mono);"><p>// END OF TRANSMISSION //</p></div>`;
+      modal.classList.add('active'); document.body.style.overflow = 'hidden';
+      gsap.fromTo(modalBody, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4 });
+    }
+
+    function closeModal() {
+      gsap.to(modalBody, { y: 50, opacity: 0, duration: 0.3, onComplete: () => { modal.classList.remove('active'); document.body.style.overflow = 'auto'; } });
+    }
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
   </script>
 </body>
+
 </html>
