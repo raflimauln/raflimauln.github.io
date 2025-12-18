@@ -65,7 +65,7 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.15; /* Turun dari 0.4 ke 0.15 biar lebih subtle */
+  opacity: 0.15; 
 }
 
 body {
@@ -104,11 +104,11 @@ button {
   mix-blend-mode: difference;
   transition: transform 0.1s;
 }
-/* Hapus rotasi dan border putus-putus yang bikin pusing */
+
 .cursor-outline {
   width: 40px;
   height: 40px;
-  border: 1px solid var(--accent); /* Garis solid tipis */
+  border: 1px solid var(--accent); 
   position: fixed;
   border-radius: 50%;
   pointer-events: none;
@@ -1454,4 +1454,3 @@ body.hovering .cursor-outline {
   display: block;
   filter: drop-shadow(0 0 10px var(--accent));
 }
-
