@@ -9,7 +9,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
   <style>
-    /* BLOG OVERRIDES (Minimal) */
     .blog-wrapper {
       padding: 120px 20px 50px;
       max-width: 1200px;
@@ -210,7 +209,6 @@
       transform: translate(-2px, -2px);
     }
 
-    /* MODAL */
     .modal-overlay {
       background: rgba(10, 14, 39, 0.98);
       z-index: 12000;
@@ -438,7 +436,7 @@
           card.addEventListener('click', () => openModal(article));
           container.appendChild(card);
         });
-        updateBlogLanguage(); // Update static UI
+        updateBlogLanguage(); 
       })
       .catch(error => {
         container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; border: 1px dashed var(--highlight); padding: 40px; color: var(--highlight);"><h2 style="font-family: var(--font-heading); font-size: 2rem;">ERROR 404: DATABASE_DISCONNECTED</h2><p style="font-family: var(--font-mono); margin-top: 10px;">Gagal memuat artikel.</p></div>`;
