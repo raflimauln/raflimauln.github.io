@@ -515,33 +515,7 @@
       });
     }
 
-      const protectPage = () => {
-        document.addEventListener('contextmenu', (e) => e.preventDefault());
-
-        document.addEventListener('keydown', (e) => {
-          if (
-            e.key === 'F12' ||
-            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
-            (e.ctrlKey && e.key === 'u') ||
-            (e.ctrlKey && e.key === 's')
-          ) {
-            e.preventDefault();
-            return false;
-          }
-        });
-
-    
-        setInterval(() => {
-          (function () {
-            return false;
-          }
-          ['constructor']('debugger')
-          ['call']());
-        }, 50);
-      };
-
-      // Jalankan proteksi
-      protectPage();
+  
   </script>
 </body>
 
